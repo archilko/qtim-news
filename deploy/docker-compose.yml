@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  news_db:
+    image: 'postgres'
+    container_name: news_db
+    ports:
+      - "5441:5432"
+    env_file:
+      - ./db/database.env
+    volumes:
+      - news_db:/var/lib/postgresql/data/
+    networks:
+      - news_be
+volumes:
+  news_db:
+networks:
+  news_be:
